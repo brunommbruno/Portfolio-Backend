@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Project;
+
 class Projects extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class Projects extends Controller
      */
     public function index()
     {
-        //
+        return Project::all();
     }
 
     /**
