@@ -27,7 +27,8 @@ class Projects extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        return Project::create($data);
     }
 
     /**
@@ -48,9 +49,11 @@ class Projects extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data  = $request->all();
+        $project->fill($data)->save();
+        return $project;
     }
 
     /**
@@ -59,8 +62,9 @@ class Projects extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return response(null, 204);
     }
 }
